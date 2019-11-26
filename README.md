@@ -3,6 +3,6 @@
 ![Django](https://img.shields.io/badge/django-2.2.4-green.svg)
 ![ReactJS](https://img.shields.io/badge/react-16.12.0-red)
 
-# DjangoReactBaseApp
+# Django-React Base Application
 
 Base template for creating DRF & React projects.
