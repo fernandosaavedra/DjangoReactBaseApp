@@ -21,7 +21,6 @@ services:
       - static_files:/static_files
     command: >
       sh -c "./wait-for.sh db:5432 -- python manage.py migrate &&
-             python manage.py collectstatic && 
              gunicorn app.wsgi -b 0.0.0.0:8000"
     environment:
       - DB_HOST=db
@@ -35,6 +34,19 @@ services:
     ports:
       - "8000:8000"
 
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    restart: always    
+    volumes:
+      - ./frontend:/frontend
+    command: >
+      sh -c "npm start"
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
 volumes:
   pgdata:
   static_files:
