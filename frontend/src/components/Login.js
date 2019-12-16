@@ -46,6 +46,7 @@ const Login = () => {
     saveRemember(!remember);
   }
 
+  const disabled = !(username && password && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(username));
 
   const SubmitLogin = async e => {
     e.preventDefault();
@@ -83,7 +84,7 @@ const Login = () => {
             label="Remember me" />
           <Button
             type="submit" fullWidth variant="contained" color="primary"
-            className={classes.submit} disabled={!(username && password) }>
+            className={classes.submit} disabled={disabled}>
             Sign In
           </Button>
           <Grid container>
